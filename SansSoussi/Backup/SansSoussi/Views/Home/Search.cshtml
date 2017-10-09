@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<string>
+
+@section Head {
+    <script src="@Url.Content("~/Scripts/Screens/Search.js")" type="text/javascript"></script>
+}
+
+<h2>Chercher pour des commentaires spécifiques</h2>
+
+<input type="text" id="searchBox" />
+
+<input id="searchsBtn" onclick="search();" value="Search" type="button" />
+
+<div id="ResultsBlock">
+@foreach(var result in Model)
+{
+    <div>
+        @Html.Raw(result)
+    </div>
+}
+</div>

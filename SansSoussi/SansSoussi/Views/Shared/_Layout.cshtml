@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    @RenderSection("Head", false)
+</head>
+
+<body>
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~/")';
+
+        function ResolveUrl(url) {
+            if (url.indexOf("~/") == 0) {
+                url = baseUrl + url.substring(2);
+            }
+            return url;
+        }
+    </script>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                <h1>SansSoussi</h1>
+            </div>
+
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
+
+            <div id="menucontainer">
+
+                <ul id="menu">
+                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Commentaires", "Comments", "Home")</li>
+                    <li>@Html.ActionLink("Recherche", "Search", "Home")</li>
+                    <li style="display: none;">@Html.ActionLink("Courriels", "Emails", "Home")</li>
+                    <li>@Html.ActionLink("À propos", "About", "Home")</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="main">
+            @RenderBody()
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
